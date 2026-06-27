@@ -4,7 +4,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 client = OpenAI(
-     
      base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
 )
 
