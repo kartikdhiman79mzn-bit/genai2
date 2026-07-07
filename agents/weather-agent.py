@@ -1,11 +1,15 @@
 from openai import OpenAI
 from dotenv import load_dotenv
 import json
+import os
 import requests
 
 load_dotenv()
 
-client = OpenAI()
+client = OpenAI(
+    api_key=os.getenv("GEMINI_API_KEY"),
+    base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
+)
 
 
 def get_weather(city: str) -> str:
@@ -90,7 +94,7 @@ while True:
 
     while True:
         response = client.chat.completions.create(
-            model='gpt-4o-mini',
+            model='gemini-3.5-flash',
             messages=message_history,
             response_format={ 'type': 'json_object' }
         )
